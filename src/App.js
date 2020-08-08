@@ -13,8 +13,8 @@ function App() {
     <Provider store={store}>
       <PersistGate persistor={persistor}>
         <ToastContainer autoClose={3000} />
-        <GlobalStyle />
         <Routes />
+        <GlobalStyle />
       </PersistGate>
     </Provider>
   );

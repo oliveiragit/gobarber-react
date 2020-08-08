@@ -5,8 +5,8 @@ import { Form, Input } from '@rocketseat/unform';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
 
-import * as auth from '~/store/modules/auth/action';
-import logo from '~/assets/logo.svg';
+import * as auth from '../../store/modules/auth/action';
+import logo from '../../assets/logo.svg';
 
 export default function SignIn() {
   const dispatch = useDispatch();

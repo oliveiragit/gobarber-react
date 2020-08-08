@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 
 import Notifications from '../Notifications';
 
-import logo from '~/assets/logo-purple.svg';
+import logo from '../../assets/logo-purple.svg';
 import { Container, Content, Profile } from './styles';
 
 export default function Header() {
@@ -27,8 +27,9 @@ export default function Header() {
             </div>
             <img
               src={
-                profile.avatar.url ||
-                'https://api.adorable.io/avatars/50/coropor.png'
+                profile.avatar
+                  ? profile.avatar.url
+                  : `https://api.adorable.io/avatars/50/${profile.name}.png`
               }
               alt={profile.name}
             />

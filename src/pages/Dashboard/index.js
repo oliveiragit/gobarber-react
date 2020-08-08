@@ -27,26 +27,28 @@ export default function Dashboard() {
 
   useEffect(() => {
     async function loadSchedule() {
-      const response = await api.get('schedule', {
-        params: { date },
-      });
+      try {
+        const response = await api.get('schedule', {
+          params: { date },
+        });
 
-      // const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-
-      const data = range.map((hour) => {
-        const checkDate = setMilliseconds(
-          setSeconds(setMinutes(setHours(date, hour), 0), 0),
-          0
-        );
-        return {
-          time: `${hour}:00h`,
-          past: isBefore(checkDate, new Date()),
-          appointment: response.data.find((a) => {
-            return isEqual(parseISO(a.date), checkDate);
-          }),
-        };
-      });
-      setSchedule(data);
+        const data = range.map((hour) => {
+          const checkDate = setMilliseconds(
+            setSeconds(setMinutes(setHours(date, hour), 0), 0),
+            0
+          );
+          return {
+            time: `${hour}:00h`,
+            past: isBefore(checkDate, new Date()),
+            appointment: response.data.find((a) => {
+              return isEqual(parseISO(a.date), checkDate);
+            }),
+          };
+        });
+        setSchedule(data);
+      } catch (error) {
+        setSchedule([]);
+      }
     }
     loadSchedule();
   }, [date]);

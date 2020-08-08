@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Form, Input } from '@rocketseat/unform';
 import * as Yup from 'yup';
 
-import * as auth from '~/store/modules/auth/action';
-import logo from '~/assets/logo.svg';
+import * as auth from '../../store/modules/auth/action';
+import logo from '../../assets/logo.svg';
 
 export default function SignIn() {
   const dispatch = useDispatch();

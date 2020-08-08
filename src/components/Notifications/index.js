@@ -19,20 +19,21 @@ export default function Notifications() {
 
   useEffect(() => {
     async function loadNotifications() {
-      const response = await api
-        .get('notifications')
-        .catch(() => toast.error('oops, servidor falhou'));
-
-      const data = response.data.map((notification) => ({
-        ...notification,
-        timeDistance: formatDistance(
-          parseISO(notification.updatedAt),
-          new Date(),
-          { locale: pt, addSuffix: true }
-        ),
-      }));
-      if (data) {
-        setNotifications(data);
+      const response = await api.get('notifications').catch(() => {
+        toast.error('oops, servidor falhou');
+      });
+      if (response) {
+        const data = response.data.map((notification) => ({
+          ...notification,
+          timeDistance: formatDistance(
+            parseISO(notification.updatedAt),
+            new Date(),
+            { locale: pt, addSuffix: true }
+          ),
+        }));
+        if (data) {
+          setNotifications(data);
+        }
       }
     }
     loadNotifications();

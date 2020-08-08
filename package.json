@@ -34,7 +34,7 @@
     "start_sem_TIL": "react-scripts start",
     "build_sem_TIL": "react-scripts build",
     "start": "react-app-rewired start",
-    "build": "react-app-rewired start",
+    "build": "react-app-rewired build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
